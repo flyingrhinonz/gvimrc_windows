@@ -1,0 +1,152 @@
+" _gvimrc file for windows v1.0.7 , 2021-08-07 by Kenneth Aaron
+
+syntax on
+colorscheme torte
+set bg=dark
+set tabstop=4
+set autoindent
+set nobackup
+set number
+set showcmd
+set showmatch
+set scrolloff=5
+    " ^ Number of lines to display above/below when scrolling lines.
+set sidescroll=8
+    " ^ Number of chars to scroll horizontally. Default is half a page.
+set sidescrolloff=24
+    " ^ Number of chars to display at the left/right edge before scrolling horizontally.
+set hlsearch
+    " ^ Highlight search results
+set backspace=indent,eol,start
+    " ^ Sensible backspace behavior
+    "   indent      allow backspacing over autoindent
+    "   eol         allow backspacing over line breaks
+    "   allow backspacing over the start of insert
+
+
+set encoding=utf-8
+    " ^ Display unicode chars. Without this you'd see weird output of degraded chars
+    "   For windows gvim this needs to go high up in the config file otherwise you'll
+    "   get error messages from gvim during loading if any unicode appears before it.
+
+
+" The following changes come from making everying tabs -> spaces, not only in python.
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+    " ^ Makes the spaces feel like real tabs
+set list
+    " ^ list & listchars mostly useful to find leading tabs at the beginning of python code
+set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
+    " ^ The chars are:
+    "   extends -   Show the '>' char in long nonwrapped lines at the right
+    "   precedes -  Show the '<' char in long nonwrappled lines at the left
+    "   nbsp -      Show the special char instead of a non-breakable space
+    "   tab -       Shows the special char instead of the tab char
+highlight NonText guifg=yellow guibg=blue
+    " ^ Change the colors for the nontext listchars I configured above (extends & precedes)
+set nowrap
+    " ^ We can disable default wrap becausse now I've got right side indicators for long lines
+
+
+hi CursorLineNr guifg=yellow guibg=#5555ff
+    " ^ Note - this is different to what I use on linux vim
+    "   hi CursorLineNr guifg=yellow guibg=#5555ff
+    "   ^ The values here can be ColorName or #ColorCode
+set cursorline
+    " ^ Enables cursor line position tracking.
+set cursorlineopt=number
+    " ^ Note - this is different to what I use on linux vim
+
+
+" 2020-06-04 1315 - Ken added support for yaml format:
+autocmd Filetype yaml setlocal
+    \ expandtab
+    \ tabstop=2
+    \ shiftwidth=2
+    \ softtabstop=2
+
+
+" Extra white space tips from here:
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces :
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+    " ^ Any whitespace - even on empty lines
+" match ExtraWhitespace /\S\zs\s\+$/
+    " ^ Whitespace only after some text
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    " ^ Any whitespace
+" autocmd InsertLeave * match ExtraWhitespace /\S\zs\s\+$/
+    " ^ Only after some text
+" autocmd BufWinLeave * call clearmatches()
+
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " ^ Disable auto insert comment on a new line after a comment in the line above
+
+
+set guifont=Consolas:h10
+    " ^ Set a sensible windows 10 font and font size
+
+autocmd GUIEnter * simalt ~X
+    " ^ Start vim with window maximized, default size is too small
+
+autocmd GUIEnter * set vb t_vb=
+    " ^ Disable annoying noises from vim
+    "   Documented here: https://vim.fandom.com/wiki/Disable_beeping
+
+set guioptions+=a
+    " ^ Text marked will be automatically copied to the clipboard
+    "   This includes every method - mark with the mouse, 'v' for visual selection, etc
+
+" Make shift-insert work like in Xterm:
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+
+set mouse=
+    " ^ Disable mouse operations - useful if you don't want cursor repositioning
+    "   when you click inside gvim window. Ken added 2021-07-07.
+
+autocmd FileType text setlocal textwidth=0
+    " ^ Override the stupid wrap lines autocmd:
+    "   'FileType text setlocal textwidth=78'    in the file:
+    "       'c: / program files (x86) / vim / vim82 / vimrc_example.vim'
+
+
+" The following settings are specific to windows.
+" Use the commands:
+"   :echo $HOME
+"   :echo $VIM
+"   :echo $MYVIMRC
+"       to show the respective paths.
+
+" The next set of commands tidy up the default files/dirs so that vim-style files
+" don't get left all over the place:
+
+set backupdir=c:/temp/vimtemp//
+    " ^ Put the backup file in a sensible directory
+    "   This dir needs to exist though!
+    "   The // at the end means that the directory information will be saved in the filename
+    "   so the backup info for /work/myfile.txt will be stored in /tmp/work/myfile.txt
+
+set directory=c:/temp/vimtemp//
+    " ^ Put the swap file in a sensible directory
+
+"set undodir=c:/temp/vimtemp//
+    " ^ Put the persistent undo file in a sensible directory
+    "   Actually we're not using this option because in the next command we're
+    "   disabling persistent undo completely.
+
+set noundofile
+    " ^ Disable persistent undo
+
+set viminfo='1000,nc:\\temp\\vimtemp\\_viminfo
+    " ^ Put the viminfo file in a sensible directory
+
+
+" Other useful settings I've found but don't use regularly:
+" set ff=unix       " Sets the new line format (cr /crlf)
+" set filetype=on   " By default it's on - type  :filetype  to view current setting
+
