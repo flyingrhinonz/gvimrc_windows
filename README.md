@@ -5,22 +5,23 @@ In the key mappings screen - you have choices between mapping the windows **ctrl
 I've chosen not to integrate windows keys into vim. vim key maps will behave normally.
 
 Here's how to get text into/outof vim to windows clipboard:
-- At the windows end everything is normal and as you're used to with the **ctrl c/v/x**
+- At the windows end:
+-- Everything is normal and as you're used to with the **ctrl c/v/x**
 - At the vim end:
-- If you're copying/cutting out of vim:
-- **ctrl insert** : to copy . Alternatively simply setup vim to copy upon select (that's what I've done).
-- For some HP laptops that are missing the INS key - it's **Fn E** [HP page](https://h30434.www3.hp.com/t5/Business-Notebooks/There-is-no-INSERT-key-on-the-new-2018-Hp-840-elitebook-G5/td-p/6695864)
-- **shift delete** : to cut
-- If you're pasting in to vim:
-- **shift insert** : to paste
-- Documented here: [vim wiki](https://vim.fandom.com/wiki/Copy,_cut_and_paste)
-- Alternatively, choose to remap the keys and put up with lost vim functionality, although **ctrl <?>** will now behave as in the rest of windows
+-- If you're copying/cutting out of vim:
+--- **ctrl insert** : to copy . Alternatively simply setup vim to copy upon select (that's what I've done).
+---- For some HP laptops that are missing the INS key - it's **Fn E** [HP page](https://h30434.www3.hp.com/t5/Business-Notebooks/There-is-no-INSERT-key-on-the-new-2018-Hp-840-elitebook-G5/td-p/6695864)
+--- **shift delete** : to cut
+-- If you're pasting in to vim:
+--- **shift insert** : to paste
+-- Documented here: [vim wiki](https://vim.fandom.com/wiki/Copy,_cut_and_paste)
+-- Alternatively, choose to remap the keys and put up with lost vim functionality, although **ctrl <?>** will now behave as in the rest of windows
 
 
 gvim default settings are pretty rubbish - they look like a notepad page. Definitely edit the vimrc file (see tips section, or my example file) to make the most of vim.
-Watch out for this line: autocmd FileType text setlocal textwidth=78 in c: / program files (x86) / vim / vim82 / vimrc_example.vim
+Watch out for this line: **autocmd FileType text setlocal textwidth=78** in **c: / program files (x86) / vim / vim82 / vimrc_example.vim**
 It causes text wrap and is really annoying. If I want to wrap text I will press ENTER myself, not have vim decide for me.
-You can check it's status using:  :verbose set tw?
+You can check it's status using:  **:verbose set tw?**
 Displays the last instance of this value being set - so if you didn't modify it as per my config below, you'll see it as loaded in the default example above.
 Once you override it per my example below - this setting will come into effect when a text file is loaded (not before).
 
