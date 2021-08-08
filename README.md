@@ -37,9 +37,9 @@ You'll notice that vim behaves strangely and not understand where these configs 
   - This then has a line that sources:  **source $VIMRUNTIME/vimrc_example.vim**
     - Which results in  this file getting sourced:
       - **c: / Program Files (x86) / vim / vim82 / vimrc_example.vim**
-    - Which in turn sources: source $VIMRUNTIME/defaults.vim
-    - Which results in  this file getting sourced:
-      - **c: / Program Files (x86) / vim / vim82 / defaults.vim**
+      - Which in turn sources: **source $VIMRUNTIME/defaults.vim**
+        - Which results in  this file getting sourced:
+          - **c: / Program Files (x86) / vim / vim82 / defaults.vim**
     - These two files result in a lot of evil and unexpected behavior!
   - Finally, your own settings file is read **_gvimrc**  - see below for details on this file.
 You'll need to undo a lot of default settings (by overwriting their values in **_gvimrc**  - because the defaults are not helpful to users who want to be productive - after all - you're that's the reason you are using vim and not notepad!).
@@ -47,25 +47,25 @@ You'll need to undo a lot of default settings (by overwriting their values in **
 
 # Tips:
 
-Settings file (what we know as /etc/vim/vimrc in linux) is called c: / program files x86 / vim / _vimrc
-Create a file called:   _gvimrc
-And put your settings here.
-This is your local file (equivalent to: /etc/vim/vimrc.local   in linux)
-You can check your $HOME directory by typing into vim command mode:
-:echo $HOME
-And  the location you need to put your _gvimrc file (this is the one you'll use):
-:echo $MYGVIMRC
-Or your _vimrc file:
-:echo $MYVIMRC
-If you really can't ditch the command line and prefer pure vim (well as close as windows will allow) -
-Windows key ? Power shell
-'cd' to whatever directory you are working in
-vim <filename>  - and you'll get a terminal vim
-Start vim in the Win10 GUI with: gvim
-Or vim/gvim from the cmd terminal
-If you like persistent undo (can undo even if you close the file and open it again), see this:
-  set undofile                 "turn on the feature
-  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
-I actually use this in my setup - the undofile setting comes from vim install, and the undodir is overwritten by me in my _gvimrc
+- Settings file (what we know as:  **/etc/vim/vimrc**  in linux) is called:   **c: / program files x86 / vim / _vimrc**
+- Create a file called:  **_gvimrc**
+  - And put your settings here.
+  - This is your local file (equivalent to:  **/etc/vim/vimrc.local**   in linux)
+- You can check your **$HOME** directory by typing into vim command mode:
+  - **:echo $HOME**
+- And the location you need to put your **_gvimrc** file (this is the one you'll use):
+  - **:echo $MYGVIMRC**
+- Or your **_vimrc** file:
+  - **:echo $MYVIMRC**
+- If you really can't ditch the command line and prefer pure vim (well as close as windows will allow):
+  - Windows key ->  Power shell
+  - 'cd' to whatever directory you are working in
+  - vim <filename>  - and you'll get a terminal vim
+- Start vim in the Win10 GUI with:  **gvim**
+  - Or vim/gvim from the cmd terminal
+- If you like persistent undo (can undo even if you close the file and open it again), see this:
+  - set undofile                 "turn on the feature
+  - set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+    - I actually use this in my setup - the undofile setting comes from vim install, and the undodir is overwritten by me in my _gvimrc
 
 
