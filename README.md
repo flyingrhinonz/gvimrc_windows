@@ -35,11 +35,9 @@ You'll notice that vim behaves strangely and not understand where these configs 
 
 - **c: / Program Files (x86) / vim / _vimrc**
   - This then has a line that sources:  **source $VIMRUNTIME/vimrc_example.vim**
-    - Which results in  this file getting sourced:
-      - **c: / Program Files (x86) / vim / vim82 / vimrc_example.vim**
+    - Which results in  this file getting sourced:  **c: / Program Files (x86) / vim / vim82 / vimrc_example.vim**
       - Which in turn sources: **source $VIMRUNTIME/defaults.vim**
-        - Which results in  this file getting sourced:
-          - **c: / Program Files (x86) / vim / vim82 / defaults.vim**
+        - Which results in  this file getting sourced:  **c: / Program Files (x86) / vim / vim82 / defaults.vim**
     - These two files result in a lot of evil and unexpected behavior!
   - Finally, your own settings file is read **_gvimrc**  - see below for details on this file.
 You'll need to undo a lot of default settings (by overwriting their values in **_gvimrc**  - because the defaults are not helpful to users who want to be productive - after all - you're that's the reason you are using vim and not notepad!).
@@ -64,8 +62,12 @@ You'll need to undo a lot of default settings (by overwriting their values in **
 - Start vim in the Win10 GUI with:  **gvim**
   - Or vim/gvim from the cmd terminal
 - If you like persistent undo (can undo even if you close the file and open it again), see this:
+
+```
   - set undofile                 "turn on the feature
   - set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
-    - I actually use this in my setup - the undofile setting comes from vim install, and the undodir is overwritten by me in my _gvimrc
+```
+
+- I actually use this in my setup - the undofile setting comes from vim install, and the undodir is overwritten by me in my _gvimrc
 
 
