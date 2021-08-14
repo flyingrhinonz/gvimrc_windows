@@ -1,7 +1,8 @@
-" _gvimrc file for windows v1.0.7 , 2021-08-07 by Kenneth Aaron
+" _gvimrc file for windows v1.0.8 , 2021-08-13 by Kenneth Aaron
 
 syntax on
 colorscheme torte
+
 set bg=dark
 set tabstop=4
 set autoindent
@@ -9,6 +10,7 @@ set nobackup
 set number
 set showcmd
 set showmatch
+
 set scrolloff=5
     " ^ Number of lines to display above/below when scrolling lines.
 set sidescroll=8
@@ -35,6 +37,7 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
     " ^ Makes the spaces feel like real tabs
+
 set list
     " ^ list & listchars mostly useful to find leading tabs at the beginning of python code
 set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
@@ -43,13 +46,20 @@ set listchars=extends:>,precedes:<,nbsp:☠,tab:▸␣
     "   precedes -  Show the '<' char in long nonwrappled lines at the left
     "   nbsp -      Show the special char instead of a non-breakable space
     "   tab -       Shows the special char instead of the tab char
+
 highlight NonText guifg=yellow guibg=blue
     " ^ Change the colors for the nontext listchars I configured above (extends & precedes)
+    "   To view the current highlight groups and their set colors use:
+    "       :so $VIMRUNTIME/syntax/hitest.vim   inside vim
+
+highlight EndOfBuffer guifg=grey guibg=black
+    " ^ To set the color of the:  '~'  at the end of the file (only supported in vim 8+)
+
 set nowrap
     " ^ We can disable default wrap becausse now I've got right side indicators for long lines
 
 
-hi CursorLineNr guifg=yellow guibg=#5555ff
+highlight CursorLineNr guifg=yellow guibg=#5555ff
     " ^ Note - this is different to what I use on linux vim
     "   hi CursorLineNr guifg=yellow guibg=#5555ff
     "   ^ The values here can be ColorName or #ColorCode
