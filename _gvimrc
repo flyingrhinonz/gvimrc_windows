@@ -1,4 +1,4 @@
-" _gvimrc file for windows v1.0.8 , 2021-08-13 by Kenneth Aaron
+" _gvimrc file for windows v1.0.9 , 2021-08-16 by Kenneth Aaron
 
 syntax on
 colorscheme torte
@@ -19,6 +19,8 @@ set sidescrolloff=24
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
 set hlsearch
     " ^ Highlight search results
+set incsearch
+    " ^ Show search results as you type
 set backspace=indent,eol,start
     " ^ Sensible backspace behavior
     "   indent      allow backspacing over autoindent
