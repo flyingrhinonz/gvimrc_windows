@@ -1,17 +1,16 @@
-" _gvimrc file for windows v1.0.10 , 2021-09-10 by Kenneth Aaron
+" _gvimrc file for windows v1.0.12 , 2021-10-07 by Kenneth Aaron
 " Source: https://github.com/flyingrhinonz/gvimrc_windows
 
 syntax on
 colorscheme torte
 
 " Syntax highlighting makes reading some text impossible in vimdiff mode.
-" Let's disable syntax highlighting in vimdiff mode:
+" Disable syntax highlighting in vimdiff mode:
 if &diff
     syntax off
 endif
 
 set bg=dark
-set tabstop=4
 set autoindent
 set nobackup
 set number
@@ -19,10 +18,10 @@ set showcmd
 set showmatch
 
 set scrolloff=5
-    " ^ Number of lines to display above/below when scrolling lines.
+    " ^ Number of lines to display above/below when scrolling lines
 set sidescroll=8
     " ^ Number of chars to scroll horizontally. Default is half a page.
-set sidescrolloff=24
+set sidescrolloff=8
     " ^ Number of chars to display at the left/right edge before scrolling horizontally.
 set hlsearch
     " ^ Highlight search results
@@ -30,9 +29,10 @@ set incsearch
     " ^ Show search results as you type
 set backspace=indent,eol,start
     " ^ Sensible backspace behavior
-    "   indent      allow backspacing over autoindent
-    "   eol         allow backspacing over line breaks
-    "   allow backspacing over the start of insert
+    "   See here: https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+    "   indent    allow backspacing over autoindent
+    "   eol       allow backspacing over line breaks (join lines)
+    "   allow backspacing over the start of insert; CTRL-W and CTRL-U stop once at the start of insert
 
 
 set encoding=utf-8
@@ -40,10 +40,16 @@ set encoding=utf-8
     "   For windows gvim this needs to go high up in the config file otherwise you'll
     "   get error messages from gvim during loading if any unicode appears before it.
 
-
-" The following changes come from making everying tabs -> spaces, not only in python.
+" The following changes come from making everything tabs->spaces, not only python.
+" This effectively replaces the commented python code later on:
+set tabstop=4
+    " ^ Tab key is now 4 chars rather than the traditional 8 chars which wastes
+    "       too much space when indenting.
 set expandtab
+    " ^ Inserts spaces whenever TAB key is pressed
+    "       If you want to insert a real tab char - use:  ctrl-v <TAB_KEY>
 set shiftwidth=4
+    " ^ Sets the number of space characters inserted for indentation
 set softtabstop=4
     " ^ Makes the spaces feel like real tabs
 
@@ -65,7 +71,8 @@ highlight EndOfBuffer guifg=grey guibg=black
     " ^ To set the color of the:  '~'  at the end of the file (only supported in vim 8+)
 
 set nowrap
-    " ^ We can disable default wrap becausse now I've got right side indicators for long lines
+    " ^ We can disable default wrap because I've now got indicators for lines
+    "       that are longer than the screen fits.
 
 
 highlight CursorLineNr guifg=yellow guibg=#5555ff
@@ -73,12 +80,12 @@ highlight CursorLineNr guifg=yellow guibg=#5555ff
     "   hi CursorLineNr guifg=yellow guibg=#5555ff
     "   ^ The values here can be ColorName or #ColorCode
 set cursorline
-    " ^ Enables cursor line position tracking.
+    " ^ Enables cursor line position tracking
 set cursorlineopt=number
     " ^ Note - this is different to what I use on linux vim
 
 
-" 2020-06-04 1315 - Ken added support for yaml format:
+" Support for yaml format:
 autocmd Filetype yaml setlocal
     \ expandtab
     \ tabstop=2
