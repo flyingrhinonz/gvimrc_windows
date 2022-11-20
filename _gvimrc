@@ -1,5 +1,11 @@
-" _gvimrc file for windows v1.0.15 , 2022-01-20 by Kenneth Aaron
-" Source: https://github.com/flyingrhinonz/gvimrc_windows
+" Name:         _gvimrc
+" Description:  vimrc for windows gvim
+" Version:      1.0.18
+" Date:         2022-11-21
+" Copyright:    Kenneth Aaron , flyingrhino AT orcon DOT net DOT nz
+" License:      GPLv3
+" Source:       https://github.com/flyingrhinonz/gvimrc_windows
+
 
 syntax on
 colorscheme torte
@@ -84,6 +90,8 @@ set cursorline
     " ^ Enables cursor line position tracking
 highlight clear CursorLine
     " ^ Removes the underline caused by enabling cursorline
+highlight CursorLine guibg=#00005f ctermbg=darkblue
+    " ^ Current line background color
 highlight clear CursorLineNr
     " ^ In new vim versions the cursor line number is separated from CursorLine
     "       and without this the cursor line number will still be underlined.
